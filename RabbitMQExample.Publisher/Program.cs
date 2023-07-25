@@ -21,14 +21,18 @@ namespace RabbitMQExample.Publisher
                 // 1.Param= Kuyruk adı, 2. Param= kuyruk fiziksel bellekte oluşup uluşturmama, 3. Param = kuyruğa sadece burdan ulaşıp ulaşmamak yani aslında public olup olmaması, 4. Param = kuyruk da bağlı herhangi bir subscribe kalmadığında kuyruğun silinip silinmemesi 
                 channel.QueueDeclare("hello-queue", true,false,false);
 
-                string message = "hello world";
+                Enumerable.Range(1, 50).ToList().ForEach(x =>
+                {
 
-                var messagebody = Encoding.UTF8.GetBytes(message);
+                    string message = $"hello world {x}";
 
-                channel.BasicPublish(string.Empty, "hello-queue",null, messagebody);
-                
-                Console.WriteLine("Mesaj Gönderildi");
-                
+                    var messagebody = Encoding.UTF8.GetBytes(message);
+
+                    channel.BasicPublish(string.Empty, "hello-queue", null, messagebody);
+
+                    Console.WriteLine($"hello world : {message}");
+                });
+
                 Console.ReadKey();
             }
         }
