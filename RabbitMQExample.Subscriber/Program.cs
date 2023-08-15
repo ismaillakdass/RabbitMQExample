@@ -20,7 +20,7 @@ namespace RabbitMQExample.Publisher
                 // Kanal oluşturuluyor. 
                 var channel = connection.CreateModel();
 
-                //1. param da 0 bana her boyuttan mesajı ver, 2. param da bana kaç kaç mesaj verilsin, 3. param true ise subcriber kaç tane ise paylaştırır false de 2. parametrede belirtilen adet kadar gönderir yani 2 suncriber varsa 5 mesaj varsa 1. ye 3 ikinciye 2 tane olacak şekilde biz false diyoruz. 1 er 1 er gönderecek
+                //1. param da 0 bana her boyuttan mesajı ver, 2. param da bana kaç kaç mesaj verilsin, 3. param true ise subcriber"consumer" kaç tane ise paylaştırır false de 2. parametrede belirtilen adet kadar gönderir yani 2 suncriber varsa 5 mesaj varsa 1. ye 3 ikinciye 2 tane olacak şekilde biz false diyoruz. 1 er 1 er gönderecek
                 channel.BasicQos(0, 1, false);
 
                 // Subscriber tarafında bu isimde kuyruk varsa bu satırın bir zararı yok eğer publisher tarafında böyle bir kuyruk yoksa oluşturur varsa olanı kullanır. Publisher tarafında ki parametrelerle aynı olması önemli.
